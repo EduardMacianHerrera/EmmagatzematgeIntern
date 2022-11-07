@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
+        Toast toast = Toast.makeText(this,"Guardado correctamente",Toast.LENGTH_SHORT);
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                     FileWriter writer = new FileWriter(ruta);
                     writer.write(String.valueOf(texto));
                     writer.close();
+                    toast.show();
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
